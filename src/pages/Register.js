@@ -14,7 +14,7 @@ function Register() {
     } else {
       try {
         const result = await axios.post(
-          "https://test-binar.herokuapp.com/auth/signup",
+          "https://private-anon-660d1caccd-testbinar.apiary-mock.com/auth/signup",
           {
             name: name,
             email: email,
