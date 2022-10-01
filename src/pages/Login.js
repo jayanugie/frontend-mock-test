@@ -1,10 +1,12 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
 
   const Submit = async (e) => {
     e.preventDefault();
@@ -20,11 +22,14 @@ function Login() {
           }
         );
         alert(result.data.status);
+        localStorage.setItem("pass", result.data.result.access_token);
+        navigate('/dashboard');
       } catch (err) {
         console.log(err);
       }
     }
   };
+
 
   return (
     <div className="position-relative">
