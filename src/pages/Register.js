@@ -23,7 +23,7 @@ function Register() {
           }
         );
         alert(result.data.status);
-        navigate('/login');
+        navigate("/login");
       } catch (err) {
         console.log(err);
       }
@@ -31,56 +31,62 @@ function Register() {
   };
 
   return (
-    <div className="position-relative">
-      <div className="">
-        <div className="">
-          <h1>Register</h1>
-          <div className="card w-25">
-            <div className="card-body ">
-              <form onSubmit={Submit}>
-                <div className="mb-3">
-                  <input
-                    type="name"
-                    className="form-control"
-                    id="name"
-                    placeholder="Name"
-                    onChange={(event) => {
-                      setName(event.target.value);
-                    }}
-                  />
-                </div>
-                <div className="mb-3">
-                  <input
-                    type="email"
-                    className="form-control"
-                    id="email"
-                    placeholder="Email"
-                    onChange={(event) => {
-                      setEmail(event.target.value);
-                    }}
-                  />
-                </div>
+    <div className="container-sm">
+      <div className="m-5">
+        <div className="p-5">
+          <div className="d-flex justify-content-center">
+            <div className="w-50">
+              <h1 className="text-center">Register</h1>
+              <div className="card w-100">
+                <div className="card-body">
+                  <form onSubmit={Submit}>
+                    <div className="mb-3">
+                      <input
+                        type="name"
+                        className="form-control"
+                        id="name"
+                        placeholder="Name"
+                        onChange={(event) => {
+                          setName(event.target.value);
+                        }}
+                      />
+                    </div>
+                    <div className="mb-3">
+                      <input
+                        type="email"
+                        className="form-control"
+                        id="email"
+                        placeholder="Email"
+                        onChange={(event) => {
+                          setEmail(event.target.value);
+                        }}
+                      />
+                    </div>
 
-                <div className="mb-3">
-                  <input
-                    type="password"
-                    className="form-control"
-                    id="password"
-                    placeholder="Password"
-                    onChange={(event) => {
-                      setPassword(event.target.value);
-                    }}
-                  />
+                    <div className="mb-3">
+                      <input
+                        type="password"
+                        className="form-control"
+                        id="password"
+                        placeholder="Password"
+                        onChange={(event) => {
+                          setPassword(event.target.value);
+                        }}
+                      />
+                    </div>
+                    <div className="text-center">
+                      <button type="submit" className="btn btn-secondary">
+                        Submit
+                      </button>
+                    </div>
+                  </form>
                 </div>
-                <button type="submit" className="btn btn-secondary ">
-                  Submit
-                </button>
-              </form>
+              </div>
+              <p className="text-center m-3">
+                Already have account? <NavLink to="/login">Login</NavLink>
+              </p>
             </div>
           </div>
-          <p>
-            Already have account? <NavLink to="/login">Login</NavLink>
-          </p>
         </div>
       </div>
     </div>

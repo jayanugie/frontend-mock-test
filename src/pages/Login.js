@@ -7,7 +7,6 @@ function Login() {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-
   const Submit = async (e) => {
     e.preventDefault();
     if (!email || !password) {
@@ -22,54 +21,58 @@ function Login() {
           }
         );
         localStorage.setItem("pass", result.data.result.access_token);
-        navigate('/dashboard');
+        navigate("/dashboard");
       } catch (error) {
         alert("Wrong Password!");
       }
     }
   };
 
-
   return (
-    <div className="position-relative">
-      <div className="">
-        <div className="">
-          <h1>Login</h1>
-          <div className="card w-25">
-            <div className="card-body ">
-              <form onSubmit={Submit}>
-                <div className="mb-3">
-                  <input
-                    type="email"
-                    className="form-control"
-                    id="email"
-                    placeholder="Email"
-                    onChange={(event) => {
-                      setEmail(event.target.value);
-                    }}
-                  />
-                </div>
+    <div className="container-sm">
+      <div className="m-5">
+        <div className="p-5">
+          <div className="d-flex justify-content-center">
+            <div className="w-50">
+              <h1 className="text-center">Login</h1>
+              <div className="card w-100">
+                <div className="card-body ">
+                  <form onSubmit={Submit}>
+                    <div className="mb-3">
+                      <input
+                        type="email"
+                        className="form-control"
+                        id="email"
+                        placeholder="Email"
+                        onChange={(event) => {
+                          setEmail(event.target.value);
+                        }}
+                      />
+                    </div>
 
-                <div className="mb-3">
-                  <input
-                    type="password"
-                    className="form-control"
-                    id="password"
-                    placeholder="Password"
-                    onChange={(event) => {
-                      setPassword(event.target.value);
-                    }}
-                  />
+                    <div className="mb-3">
+                      <input
+                        type="password"
+                        className="form-control"
+                        id="password"
+                        placeholder="Password"
+                        onChange={(event) => {
+                          setPassword(event.target.value);
+                        }}
+                      />
+                    </div>
+                    <button type="submit" className="btn btn-secondary ">
+                      Submit
+                    </button>
+                  </form>
                 </div>
-                <button type="submit" className="btn btn-secondary ">
-                  Submit
-                </button>
-              </form>
+              </div>
+              <p className="text-center m-3">
+                Don't have an account?{" "}
+                <NavLink to="/register">Register</NavLink>
+              </p>
             </div>
           </div>
-          <p>
-            Don't have an account? <NavLink to="/register">Register</NavLink>
-          </p>
         </div>
       </div>
     </div>
