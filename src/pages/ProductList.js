@@ -26,6 +26,7 @@ function ProductList() {
         alert("Please login first!");
         navigate('/login');
     }
+    // eslint-disable-next-line
   }, []);
 
   if (!products) return null;

@@ -21,11 +21,10 @@ function Login() {
             password: password,
           }
         );
-        alert(result.data.status);
         localStorage.setItem("pass", result.data.result.access_token);
         navigate('/dashboard');
-      } catch (err) {
-        console.log(err);
+      } catch (error) {
+        alert("Wrong Password!");
       }
     }
   };
