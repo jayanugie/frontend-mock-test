@@ -28,18 +28,21 @@ function Navbar() {
     } else {
       try {
         const result = await axios.post(
-          "https://private-anon-660d1caccd-testbinar.apiary-mock.com/v1/products/",
+          "https://test-binar.herokuapp.com/v1/products/",
           {
             name: name,
             price: price,
             imageurl: imageurl,
+          },
+          {
+            headers: { Authorization: `${localStorage.getItem("pass")}`},
           }
         );
         console.log(result.data.result);
         alert("List added");
         window.location.reload();
       } catch (err) {
-        console.log(err);
+        console.log(err.message);
       }
     }
   };
@@ -78,7 +81,7 @@ function Navbar() {
           <form onSubmit={createProduct}>
             <div className="mb-3">
               <input
-                type="product-name"
+                type="text"
                 className="form-control"
                 id="productName"
                 placeholder="Product Name"
@@ -90,7 +93,7 @@ function Navbar() {
 
             <div className="mb-3">
               <input
-                type="price"
+                type="number"
                 className="form-control"
                 id="price"
                 placeholder="Price (Dollar USD)"
@@ -102,7 +105,7 @@ function Navbar() {
 
             <div className="mb-3">
               <input
-                type="imgage-url"
+                type="text"
                 className="form-control"
                 id="imgUrl"
                 placeholder="Image url"

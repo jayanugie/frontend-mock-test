@@ -11,9 +11,9 @@ function ProductList() {
   const navigate = useNavigate();
 
   // modal edit
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const [showEdit, setShow] = useState(false);
+  const handleCloseEdit = () => setShow(false);
+  const handleShowEdit = () => setShow(true);
 
   // modal delete
   const [showDelete, setShowDelete] = useState(false);
@@ -23,7 +23,10 @@ function ProductList() {
   const getData = async () => {
     try {
       const result = await axios.get(
-        "https://private-anon-660d1caccd-testbinar.apiary-mock.com/v1/products"
+        "https://test-binar.herokuapp.com/v1/products",
+        {
+          headers: { "Authorization": localStorage.getItem("pass")}
+        }
       );
       setProducts(result.data.result);
       console.log(result.data.result);
@@ -45,10 +48,10 @@ function ProductList() {
   if (!products) return null;
 
   // delete by id
-  const deleteProduct = async (e) => {
+  const deleteProduct = async (e, id) => {
     e.preventDefault();
     const result = await axios.delete(
-      `https://private-anon-660d1caccd-testbinar.apiary-mock.com/v1/products/8`
+      `https://test-binar.herokuapp.com/v1/products/${id}`
     );
     console.log(result.data.result.message);
     alert(result.data.result.message);
@@ -89,15 +92,15 @@ function ProductList() {
                         >
                           <img src="/delete.png" alt="delete" />
                         </button>
-                        <button onClick={handleShow} className="edit-btn">
+                        <button onClick={handleShowEdit} className="edit-btn">
                           <img src="/edit.png" alt="edit" />
                         </button>
                       </div>
                     </div>
                     {/* modal edit*/}
-                    <Modal show={show} onHide={handleClose}>
+                    <Modal show={showEdit} onHide={handleCloseEdit}>
                       <Modal.Header>
-                        <Modal.Title>Create new</Modal.Title>
+                        <Modal.Title>Edit Product</Modal.Title>
                       </Modal.Header>
                       <div className="container p-3">
                         <form>
@@ -129,7 +132,7 @@ function ProductList() {
                           </div>
 
                           <Modal.Footer>
-                            <Button variant="light" onClick={handleClose}>
+                            <Button variant="light" onClick={handleCloseEdit}>
                               Back
                             </Button>
                             <Button variant="secondary" type="submit">
@@ -143,7 +146,7 @@ function ProductList() {
                     {/* modal confirm delete */}
                     <Modal show={showDelete} onHide={handleCloseDelete}>
                       <Modal.Body>
-                        <>Are you sure want to delete?</>
+                        Are you sure want to delete?
                       </Modal.Body>
                       <Modal.Footer>
                         <Button variant="light" onClick={handleCloseDelete}>
@@ -151,7 +154,7 @@ function ProductList() {
                         </Button>
                         <Button
                           variant="secondary"
-                          onClick={(e) => deleteProduct(e)}
+                          onClick={(e) => deleteProduct(e, product.id)}
                         >
                           Yes, delete it
                         </Button>
