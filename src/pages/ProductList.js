@@ -15,6 +15,11 @@ function ProductList() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  // modal delete
+  const [showDelete, setShowDelete] = useState(false);
+  const handleCloseDelete = () => setShowDelete(false);
+  const handleShowDelete = () => setShowDelete(true);
+
   const getData = async () => {
     try {
       const result = await axios.get(
@@ -62,12 +67,11 @@ function ProductList() {
             <div className="row row-cols-3">
               {products.map((product, idx) => {
                 return (
-                  <div>
+                  <div key={idx}>
                     <div className="col p-2">
                       <div
                         className="card container-img"
                         style={{ width: "18rem" }}
-                        key={idx}
                       >
                         <img
                           src={product.imageurl}
@@ -80,7 +84,7 @@ function ProductList() {
                           <p className="card-text">$ {product.price}</p>
                         </div>
                         <button
-                          onClick={(e) => deleteProduct(e)}
+                          onClick={handleShowDelete}
                           className="delete-btn"
                         >
                           <img src="/delete.png" alt="delete" />
@@ -90,6 +94,69 @@ function ProductList() {
                         </button>
                       </div>
                     </div>
+                    {/* modal edit*/}
+                    <Modal show={show} onHide={handleClose}>
+                      <Modal.Header>
+                        <Modal.Title>Create new</Modal.Title>
+                      </Modal.Header>
+                      <div className="container p-3">
+                        <form>
+                          <div className="mb-3">
+                            <input
+                              type="product-name"
+                              className="form-control"
+                              id="productName"
+                              placeholder="Product Name"
+                            />
+                          </div>
+
+                          <div className="mb-3">
+                            <input
+                              type="price"
+                              className="form-control"
+                              id="price"
+                              placeholder="Price (Dollar USD)"
+                            />
+                          </div>
+
+                          <div className="mb-3">
+                            <input
+                              type="imgage-url"
+                              className="form-control"
+                              id="imgUrl"
+                              placeholder="Image url"
+                            />
+                          </div>
+
+                          <Modal.Footer>
+                            <Button variant="light" onClick={handleClose}>
+                              Back
+                            </Button>
+                            <Button variant="secondary" type="submit">
+                              Create
+                            </Button>
+                          </Modal.Footer>
+                        </form>
+                      </div>
+                    </Modal>
+
+                    {/* modal confirm delete */}
+                    <Modal show={showDelete} onHide={handleCloseDelete}>
+                      <Modal.Body>
+                        <>Are you sure want to delete?</>
+                      </Modal.Body>
+                      <Modal.Footer>
+                        <Button variant="light" onClick={handleCloseDelete}>
+                          No
+                        </Button>
+                        <Button
+                          variant="secondary"
+                          onClick={(e) => deleteProduct(e)}
+                        >
+                          Yes, delete it
+                        </Button>
+                      </Modal.Footer>
+                    </Modal>
                   </div>
                 );
               })}
@@ -97,51 +164,6 @@ function ProductList() {
           </div>
         </div>
       </div>
-      {/* modal */}
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header>
-          <Modal.Title>Create new</Modal.Title>
-        </Modal.Header>
-        <div className="container p-3">
-          <form>
-            <div className="mb-3">
-              <input
-                type="product-name"
-                className="form-control"
-                id="productName"
-                placeholder="Product Name"
-              />
-            </div>
-
-            <div className="mb-3">
-              <input
-                type="price"
-                className="form-control"
-                id="price"
-                placeholder="Price (Dollar USD)"
-              />
-            </div>
-
-            <div className="mb-3">
-              <input
-                type="imgage-url"
-                className="form-control"
-                id="imgUrl"
-                placeholder="Image url"
-              />
-            </div>
-
-            <Modal.Footer>
-              <Button variant="light" onClick={handleClose}>
-                Back
-              </Button>
-              <Button variant="secondary" type="submit">
-                Create
-              </Button>
-            </Modal.Footer>
-          </form>
-        </div>
-      </Modal>
     </div>
   );
 }
