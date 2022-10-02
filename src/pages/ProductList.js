@@ -3,10 +3,17 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import "../assets/styles/Style.css";
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
 
 function ProductList() {
   const [products, setProducts] = useState(null);
   const navigate = useNavigate();
+
+  // modal edit
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   const getData = async () => {
     try {
@@ -36,7 +43,7 @@ function ProductList() {
   const DeleteProduct = async (e) => {
     e.preventDefault();
     const result = await axios.delete(
-      `https://private-anon-660d1caccd-testbinar.apiary-mock.com/v1/products/8`, 
+      `https://private-anon-660d1caccd-testbinar.apiary-mock.com/v1/products/8`
     );
     console.log(result.data.result.message);
     alert(result.data.result.message);
@@ -72,11 +79,14 @@ function ProductList() {
                           <h5 className="card-title">{product.name}</h5>
                           <p className="card-text">$ {product.price}</p>
                         </div>
-                        <button onClick={(e) => DeleteProduct(e)} className="delete-btn">
-                          <img src="/delete.png" alt="delete"/>
+                        <button
+                          onClick={(e) => DeleteProduct(e)}
+                          className="delete-btn"
+                        >
+                          <img src="/delete.png" alt="delete" />
                         </button>
-                        <button className="edit-btn">
-                          <img src="/edit.png" alt="edit"/>
+                        <button onClick={handleShow} className="edit-btn">
+                          <img src="/edit.png" alt="edit" />
                         </button>
                       </div>
                     </div>
@@ -87,6 +97,51 @@ function ProductList() {
           </div>
         </div>
       </div>
+      {/* modal */}
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header>
+          <Modal.Title>Create new</Modal.Title>
+        </Modal.Header>
+        <div className="container p-3">
+          <form>
+            <div className="mb-3">
+              <input
+                type="product-name"
+                className="form-control"
+                id="productName"
+                placeholder="Product Name"
+              />
+            </div>
+
+            <div className="mb-3">
+              <input
+                type="price"
+                className="form-control"
+                id="price"
+                placeholder="Price (Dollar USD)"
+              />
+            </div>
+
+            <div className="mb-3">
+              <input
+                type="imgage-url"
+                className="form-control"
+                id="imgUrl"
+                placeholder="Image url"
+              />
+            </div>
+
+            <Modal.Footer>
+              <Button variant="light" onClick={handleClose}>
+                Back
+              </Button>
+              <Button variant="secondary" type="submit">
+                Create
+              </Button>
+            </Modal.Footer>
+          </form>
+        </div>
+      </Modal>
     </div>
   );
 }
