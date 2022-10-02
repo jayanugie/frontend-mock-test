@@ -21,7 +21,7 @@ function Navbar() {
     navigate("/login");
   };
 
-  const CreateProduct = async (e) => {
+  const createProduct = async (e) => {
     e.preventDefault();
     if (!name || !price || !imageurl) {
       alert("Can not be empty!");
@@ -75,7 +75,7 @@ function Navbar() {
           <Modal.Title>Create new</Modal.Title>
         </Modal.Header>
         <div className="container p-3">
-          <form onSubmit={CreateProduct}>
+          <form onSubmit={createProduct}>
             <div className="mb-3">
               <input
                 type="product-name"

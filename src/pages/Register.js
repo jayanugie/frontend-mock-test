@@ -8,7 +8,7 @@ function Register() {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const Submit = async (e) => {
+  const submit = async (e) => {
     e.preventDefault();
     if (!name || !email || !password) {
       alert("Can not be empty!");
@@ -40,7 +40,7 @@ function Register() {
               <h1 className="text-center">Register</h1>
               <div className="card">
                 <div className="card-body">
-                  <form onSubmit={Submit}>
+                  <form onSubmit={submit}>
                     <div className="mb-3">
                       <input
                         type="name"

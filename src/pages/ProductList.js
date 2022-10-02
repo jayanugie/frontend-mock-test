@@ -40,7 +40,7 @@ function ProductList() {
   if (!products) return null;
 
   // delete by id
-  const DeleteProduct = async (e) => {
+  const deleteProduct = async (e) => {
     e.preventDefault();
     const result = await axios.delete(
       `https://private-anon-660d1caccd-testbinar.apiary-mock.com/v1/products/8`
@@ -80,7 +80,7 @@ function ProductList() {
                           <p className="card-text">$ {product.price}</p>
                         </div>
                         <button
-                          onClick={(e) => DeleteProduct(e)}
+                          onClick={(e) => deleteProduct(e)}
                           className="delete-btn"
                         >
                           <img src="/delete.png" alt="delete" />
