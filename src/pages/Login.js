@@ -61,9 +61,11 @@ function Login() {
                         }}
                       />
                     </div>
-                    <button type="submit" className="btn btn-secondary ">
-                      Submit
-                    </button>
+                    <div className="text-center">
+                      <button type="submit" className="btn btn-secondary ">
+                        Login
+                      </button>
+                    </div>
                   </form>
                 </div>
               </div>

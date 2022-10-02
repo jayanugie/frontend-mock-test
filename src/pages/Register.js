@@ -77,7 +77,7 @@ function Register() {
                     </div>
                     <div className="text-center">
                       <button type="submit" className="btn btn-secondary">
-                        Submit
+                        Register
                       </button>
                     </div>
                   </form>

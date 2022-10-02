@@ -60,7 +60,7 @@ function ProductList() {
         const result = await axios.put(
           `https://test-binar.herokuapp.com/v1/products/${id}`,
           {
-            headers: { "Authorization": localStorage.getItem("pass") },
+            headers: { Authorization: localStorage.getItem("pass") },
           },
           {
             name: updateName,
@@ -187,7 +187,7 @@ function ProductList() {
               <Modal show={showDelete} onHide={handleCloseDelete}>
                 <Modal.Body>
                   <>
-                  Are you sure want to delete? <tr/>
+                    Are you sure want to delete? <tr />
                   </>
                 </Modal.Body>
                 <Modal.Footer>
