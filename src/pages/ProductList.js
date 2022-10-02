@@ -75,6 +75,9 @@ function ProductList() {
                         <button onClick={(e) => DeleteProduct(e)} className="delete-btn">
                           <img src="/delete.png" alt="delete"/>
                         </button>
+                        <button className="edit-btn">
+                          <img src="/edit.png" alt="edit"/>
+                        </button>
                       </div>
                     </div>
                   </div>
