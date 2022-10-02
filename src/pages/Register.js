@@ -15,14 +15,15 @@ function Register() {
     } else {
       try {
         const result = await axios.post(
-          "https://private-anon-660d1caccd-testbinar.apiary-mock.com/auth/signup",
+          "https://test-binar.herokuapp.com/auth/signup",
           {
             name: name,
             email: email,
             password: password,
           }
         );
-        alert(result.data.status);
+        console.log(result.data.result);
+        alert("Register successful")
         navigate("/login");
       } catch (err) {
         console.log(err);
