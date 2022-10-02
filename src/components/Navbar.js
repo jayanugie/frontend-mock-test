@@ -35,7 +35,7 @@ function Navbar() {
             imageurl: imageurl,
           },
           {
-            headers: { Authorization: `${localStorage.getItem("pass")}`},
+            headers: { Authorization: `${localStorage.getItem("pass")}` },
           }
         );
         console.log(result.data.result);
