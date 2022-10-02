@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
+import "../assets/styles/Style.css";
 
 function ProductList() {
   const [products, setProducts] = useState(null);
@@ -57,7 +58,7 @@ function ProductList() {
                   <div>
                     <div className="col p-2">
                       <div
-                        className="card"
+                        className="card container-img"
                         style={{ width: "18rem" }}
                         key={idx}
                       >
@@ -71,8 +72,8 @@ function ProductList() {
                           <h5 className="card-title">{product.name}</h5>
                           <p className="card-text">$ {product.price}</p>
                         </div>
-                        <button onClick={(e) => DeleteProduct(e)}>
-                          Delete
+                        <button onClick={(e) => DeleteProduct(e)} className="delete-btn">
+                          <img src="/delete.png" alt="delete"/>
                         </button>
                       </div>
                     </div>
