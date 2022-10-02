@@ -14,7 +14,7 @@ function Login() {
     } else {
       try {
         const result = await axios.post(
-          "https://private-anon-660d1caccd-testbinar.apiary-mock.com/auth/login",
+          "https://test-binar.herokuapp.com/auth/login",
           {
             email: email,
             password: password,

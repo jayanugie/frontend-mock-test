@@ -35,8 +35,9 @@ function Navbar() {
             imageurl: imageurl,
           }
         );
-        console.log(result.data);
-        alert(result.data.status);
+        console.log(result.data.result);
+        alert("List added");
+        window.location.reload();
       } catch (err) {
         console.log(err);
       }
