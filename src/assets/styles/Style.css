@@ -1,0 +1,34 @@
+.container-img {
+  position: relative;
+  width: 50%;
+}
+
+.container-img img {
+  width: 100%;
+  height: auto;
+}
+
+.container-img .delete-btn {
+  position: absolute;
+  top: 7%;
+  left: 93%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: transparent;
+  width: 35px;
+  border: none;
+  cursor: pointer;
+}
+
+.container-img .edit-btn {
+    position: absolute;
+    top: 7%;
+    left: 83%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: transparent;
+    width: 32px;
+    border: none;
+    cursor: pointer;
+  }
+  
