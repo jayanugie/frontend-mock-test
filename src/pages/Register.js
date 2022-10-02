@@ -35,9 +35,9 @@ function Register() {
       <div className="m-5">
         <div className="p-5">
           <div className="d-flex justify-content-center">
-            <div className="w-50">
+            <div className="">
               <h1 className="text-center">Register</h1>
-              <div className="card w-100">
+              <div className="card">
                 <div className="card-body">
                   <form onSubmit={Submit}>
                     <div className="mb-3">
